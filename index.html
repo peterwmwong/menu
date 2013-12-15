@@ -159,6 +159,9 @@ angular.module('menu',['ng']).
 
           '<li class="group-header">Specials</li>'+
           '<li class="recipe" ng-repeat="el in specials" ng-click="setRecipeGistId(el.recipeGistId)">{{el.name}}</li>'+
+
+          '<li class="group-header">Trial</li>'+
+          '<li class="recipe" ng-repeat="el in trial" ng-click="setRecipeGistId(el.recipeGistId)">{{el.name}}</li>'+
         '</ul>'+
         '<show-recipe recipe-gist-id="recipeGistId" ng-if="recipeGistId"></show-recipe>',
       controller: function($scope, $http, $location){
@@ -177,7 +180,7 @@ angular.module('menu',['ng']).
           success(function(gists){
             gists.forEach(function(gist){
               var key = Object.keys(gist.files)[0];
-              var recipe = /^(recipe|sides|specials)-(.*)/.exec(key);
+              var recipe = /^(recipe|sides|specials|trial)-(.*)/.exec(key);
               ($scope[recipe[1]] || ($scope[recipe[1]] = [])).push({
                 name: recipe[2].replace(/-/g,' ').
                                 replace(/\.md$/g,'').
