@@ -136,8 +136,7 @@ angular.module('menu',['ng']).
       controller: function($scope, $http, $location){
 
         $scope.$watch(function(){ return $location.path() },function(path){
-          $scope.recipeGistId = path.split('/')[2] || path.split('/')[1];
-          console.log(path, $scope.recipeGistId);
+          $scope.recipeGistId = (location.host === 'peterwmwong.github.io') ? path.split('/')[2] : path.split('/')[1];
         });
 
         $scope.setRecipeGistId = function(id){
