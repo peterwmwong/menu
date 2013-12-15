@@ -91,6 +91,10 @@ show-recipe .go-back {
   cursor: pointer;
 }
 
+show-recipe > .recipe-src > h1:first-child {
+  padding-right: 90px;
+}
+
 show-recipe ol, show-recipe ul, show-recipe li {
   list-style-type: square;
 }
@@ -115,7 +119,7 @@ show-recipe li {
 (function(){
 angular.module('menu',['ng']).
   config(function($locationProvider){
-    $locationProvider.html5Mode(true);
+    $locationProvider.html5Mode(false);
   }).
   directive('showRecipe',function(){
     return {
@@ -125,12 +129,12 @@ angular.module('menu',['ng']).
       },
       template:
         '<div class="go-back" ng-click="gotoList()">Recipes</div>'+
-        '<div ng-bind-html="recipeSrc"></div>',
+        '<div class="recipe-src" ng-bind-html="recipeSrc"></div>',
       controller: function($scope,$http,$sce,$location){
         $scope.gotoList = function(){
           $location.path((location.host === 'peterwmwong.github.io') ? '/menu' : '/');
         };
-        var url = "https://api.github.com/gists/"+$scope.recipeGistId;
+        var url = "https://api.github.com/gists/"+$scope.recipeGistId+"?oauth_token=3b205d0414d15bf7d33c7c1ed648b180746b9e99";
         $http.get(url,{}).success(function(data){
           var c = data.files[Object.keys(data.files)[0]].content;
           $scope.recipeSrc = $sce.trustAsHtml(marked(c));
