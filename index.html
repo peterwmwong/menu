@@ -140,7 +140,9 @@ angular.module('menu',['ng']).
         });
 
         $scope.setRecipeGistId = function(id){
-          $location.path("/"+id);
+          $location.path("/"+
+            ((location.host === 'peterwmwong.github.io') ? "menu/"+id : id)
+          );
         };
 
         $http.get('https://api.github.com/users/bowelmovement/gists?oauth_token=3b205d0414d15bf7d33c7c1ed648b180746b9e99',{}).
