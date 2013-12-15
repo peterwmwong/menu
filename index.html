@@ -5,7 +5,7 @@
 <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
 <meta content="width=320.1, initial-scale=1, user-scalable=no" name="viewport" />
 <meta content="yes" name="apple-mobile-web-app-capable" />
-<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style" />
+<meta content="default" name="apple-mobile-web-app-status-bar-style" />
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
 
 <style>
@@ -74,6 +74,21 @@ show-recipe {
   display: block;
   overflow: hidden;
   padding: 0 8px;
+  position: relative;
+}
+
+show-recipe .go-back {
+  position: absolute;
+  top: 4px;
+  right: 10px;
+
+  border-radius: 5px;
+  background: #444;
+  line-height: 36px;
+  padding: 0 10px;
+  color: #DDD;
+  box-shadow: 0px 1px 0px #000;
+  cursor: pointer;
 }
 
 show-recipe ol, show-recipe ul, show-recipe li {
@@ -108,8 +123,13 @@ angular.module('menu',['ng']).
       scope: {
         recipeGistId: '='
       },
-      template: '<div ng-bind-html="recipeSrc"></div>',
-      controller: function($scope,$http,$sce){
+      template:
+        '<div class="go-back" ng-click="gotoList()">Recipes</div>'+
+        '<div ng-bind-html="recipeSrc"></div>',
+      controller: function($scope,$http,$sce,$location){
+        $scope.gotoList = function(){
+          $location.path((location.host === 'peterwmwong.github.io') ? '/menu' : '/');
+        };
         var url = "https://api.github.com/gists/"+$scope.recipeGistId;
         $http.get(url,{}).success(function(data){
           var c = data.files[Object.keys(data.files)[0]].content;
