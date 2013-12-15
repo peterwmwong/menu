@@ -44,6 +44,7 @@ ul .group-header:first-child {
 .recipeList li.recipe {
   cursor: pointer;
   color: #666;
+  text-shadow: 0px 2px #FFF;
 }
 
 .recipeList li.recipe:hover {
@@ -54,14 +55,15 @@ ul .group-header:first-child {
 h1, li.group-header {
   font-size: 24px;
   background-color: #EEE;
-  border-bottom: 1px solid #AAA;
+  border-bottom: 1px solid #CCC;
   margin: 0 -8px;
   padding: 8px;
-  font-weight: bold;
+  font-weight: normal;
 }
 
 li.group-header {
   margin: 4px 0;
+  border-top: 1px solid #CCC;
 }
 
 h2 {
@@ -177,7 +179,9 @@ angular.module('menu',['ng']).
               var key = Object.keys(gist.files)[0];
               var recipe = /^(recipe|sides|specials)-(.*)/.exec(key);
               ($scope[recipe[1]] || ($scope[recipe[1]] = [])).push({
-                name: recipe[2].replace(/-/g,' ').replace(/\.md$/g,''),
+                name: recipe[2].replace(/-/g,' ').
+                                replace(/\.md$/g,'').
+                                replace(/\b\w/g, function(a){return a.toUpperCase();}),
                 recipeGistId: gist.id
               });
             });
