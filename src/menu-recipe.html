@@ -35,16 +35,16 @@
           </li>
         </template>
         <li class='list__item'>
-          <input placeholder='add an ingredient'/>
+          <input placeholder='add an ingredient' on-change='onAddIngredient'/>
         </li>
         <li class='list__item list__item--header'>Directions</li>
         <template is='x-repeat' items='[[recipe.directions]]'>
           <li class='list__item'>
-            <textarea value='[[item]]' rows='5' on-input='onIngredientDirectionUpdate'></textarea>
+            <textarea value='[[item]]' rows='4' on-input='onIngredientDirectionUpdate'></textarea>
           </li>
         </template>
         <li class='list__item'>
-          <textarea placeholder='add a direction'></textarea>
+          <textarea placeholder='add a direction' rows='4' on-change='onAddDirection'></textarea>
         </li>
       </ul>
     </div>
@@ -67,6 +67,20 @@ Polymer({
 
   onRecipeNameUpdate:function(event){
     this.setPathValue('recipe.name', event.currentTarget.value);
+    this.recipe.save();
+  },
+
+  onAddIngredient:function(event){
+    var newIngredient = event.currentTarget.value;
+    this.recipe.ingredients.push(newIngredient);
+    event.currentTarget.value = '';
+    this.recipe.save();
+  },
+
+  onAddDirection:function(event){
+    var newDirection = event.currentTarget.value;
+    this.recipe.directions.push(newDirection);
+    event.currentTarget.value = '';
     this.recipe.save();
   },
 
