@@ -1,7 +1,16 @@
 body {
-  font-family: "RobotoDraft", Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  font-weight: 300;
+  font-family : "RobotoDraft", Helvetica, Arial, sans-serif;
+  font-size   : 16px;
+  font-weight : 400;
+}
+
+
+/*========================
+  links
+  ========================*/
+
+a {
+  cursor: pointer;
 }
 
 /*========================
@@ -10,13 +19,16 @@ body {
 
 input,
 textarea {
-  border    : none;
-  outline   : none;
-  font-size : inherit;
-  resize    : none;
-  width     : 100%;
-  padding   : 0;
-  margin    : 0;
+  border      : none;
+  box-sizing  : border-box;
+  font-size   : inherit;
+  font-family : inherit;
+  font-weight : inherit;
+  margin      : 0;
+  outline     : none;
+  padding     : 0;
+  resize      : none;
+  width       : 100%;
 }
 
 ::-webkit-input-placeholder {
