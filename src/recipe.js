@@ -4,16 +4,14 @@
   function clone(arr){ return Array.prototype.slice.call(arr) }
 
   function Recipe(fb, createData){
+    var _this     = this;
+    this._fb      = fb;
     this._initData(createData);
-    this._fb = fb;
 
-    if(!createData){
-      fb.on("value", function(snap){
-        this._initData(snap.val());
-      }.bind(this));
-    } else {
+    if(!createData)
+      fb.once("value", function(snap){ _this._initData(snap.val()) });
+    else
       this.isNew = true;
-    }
   }
 
   Recipe.prototype = {
@@ -21,13 +19,13 @@
       data             = data || {};
       this.name        = data.name;
       this.ingredients = data.ingredients || [];
-      this.directions  = data.directions || [];
+      this.directions  = data.directions  || [];
     },
     save: function(){
       this._fb.set({
-        name: this.name,
-        ingredients: clone(this.ingredients),
-        directions: clone(this.directions)
+        name        : this.name,
+        ingredients : clone(this.ingredients),
+        directions  : clone(this.directions)
       });
       this.isNew = false;
     }
@@ -42,13 +40,13 @@
         '2 tbsp rice vinegar',
         '2 tbsp brown sugar',
         '3 tbsp soy sauce',
-        // '1 tsp minced garlic',
-        // '2 tsp ginger',
-        // '3 tbsp corn starch',
-        // '1.5 cups broccoli florets',
-        // '1.5 cups green beans',
-        // '1 bell pepper',
-        // '1 small onion'
+        '1 tsp minced garlic',
+        '2 tsp ginger',
+        '3 tbsp corn starch',
+        '1.5 cups broccoli florets',
+        '1.5 cups green beans',
+        '1 bell pepper',
+        '1 small onion'
       ],
       directions: [
         'Cut raw chicken to pieces and season the chicken with salt and pepper, then sprinkle with corn starch and rub the corn starch into the chicken.',
