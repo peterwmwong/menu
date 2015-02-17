@@ -1,0 +1,239 @@
+<script src='recipe.js'></script>
+<link href="//fonts.googleapis.com/css?family=RobotoDraft:300,400,500" rel="stylesheet">
+
+<style>
+  body {
+    font-family: "RobotoDraft", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+  }
+
+  /*========================
+    inputs
+    ========================*/
+
+  input,
+  textarea {
+    border    : none;
+    outline   : none;
+    font-size : inherit;
+    resize    : none;
+    width     : 100%;
+  }
+
+  ::-webkit-input-placeholder {
+    color      : #DDD;
+    font-style : italic;
+  }
+
+  /*========================
+    toolbar
+    ========================*/
+  .app-toolbar {
+    background  : #536DFE;
+    color       : white;
+    font-size   : 24px;
+    font-weight : 400;
+    height      : 56px;
+    line-height : 56px;
+    padding     : 0 16px;
+  }
+
+  .app-toolbar > * {
+    margin-right: 8px;
+  }
+
+  .app-toolbar > .app-toolbar__right-item {
+    float        : right;
+    margin-left  : 8px;
+    margin-right : 0;
+  }
+
+
+  .app-content {
+    position : absolute;
+      top    : 56px;
+      bottom : 0;
+      left   : 0;
+      right  : 0;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+
+  /*========================
+    list
+    ========================*/
+  .list {
+    margin: 0;
+    padding: 0 16px;
+  }
+
+  .list__item {
+    list-style-type : none;
+    padding: 12px 0;
+  }
+
+  .list__item.list__item--header {
+    color       : #AAA;
+    font-size   : 14px;
+    font-weight : 500;
+    padding     : 24px 0 8px 0;
+    position    : relative;
+  }
+
+  .list__item.list__item--header:first-child:before {
+    display: none;
+  }
+  .list__item.list__item--header:first-child {
+    padding: 16px 0 8px 0;
+  }
+
+  .list__item.list__item--header:before {
+    position : absolute;
+      top    :   4px;
+      right  : -16px;
+      left   : -16px;
+
+    background : #EEE;
+    content    : '';
+    height     : 1px;
+  }
+
+  .list__item.list__item--header.list__item--no-border:before {
+    display: none;
+  }
+</style>
+
+<dom-module id='menu-app'>
+  <style>
+  </style>
+  <template>
+    <div class='app-toolbar'>
+      Menu
+      <a class='app-toolbar__right-item' on-click='onAddRecipe'>+<a>
+    </div>
+    <div class='app-content'>
+      <ul class='list'>
+        <li class='list__item list__item--header'>Recipes</li>
+        <template is='x-repeat' items='[[recipes]]'>
+          <li class='list__item' on-click='onSelectRecipe'>[[item.name]]</li>
+        </template>
+        <li class='list__item list__item--header'>Trial</li>
+        <li class='list__item' on-click='onSelectRecipe'>blah</li>
+        <li class='list__item list__item--header'>Sides</li>
+        <li class='list__item' on-click='onSelectRecipe'>blah</li>
+        <li class='list__item list__item--header'>Specials</li>
+        <li class='list__item' on-click='onSelectRecipe'>blah</li>
+      </ul>
+    </div>
+  </template>
+</dom-module>
+<script>
+Polymer({
+  is: 'menu-app',
+  configure:function(){
+    return {
+      recipes : Recipe.all
+    };
+  },
+
+  selectRecipe:function(recipe){
+    var mr = this.querySelector('menu-recipe');
+    if(mr) return;
+
+    mr = document.createElement('menu-recipe');
+    mr.recipe = recipe;
+    mr.addEventListener('menu-recipe-close',this.onCloseRecipe.bind(this));
+    this.appendChild(mr);
+  },
+
+  onAddRecipe:function(){
+    this.selectRecipe(Recipe.create());
+  },
+
+  onSelectRecipe:function(event){
+    this.selectRecipe(event.target._templateProxy.item);
+  },
+
+  onCloseRecipe:function(){
+    var mr = this.querySelector('menu-recipe');
+    if(mr) mr.remove();
+  }
+});
+</script>
+
+<dom-module id='menu-recipe'>
+  <style>
+    menu-recipe {
+      background: white;
+      position : absolute;
+        top    : 0;
+        bottom : 0;
+        left   : 0;
+        right  : 0;
+    }
+
+    .menu-recipe__name {
+      font-size: 28px;
+      padding: 32px 16px 32px 16px;
+      border-bottom: 1px solid #EEE;
+    }
+  </style>
+  <template>
+    <div class='app-toolbar'>
+      <a class='app-toolbar__button' on-click='onClose'>&lt;</a>
+      Recipe
+      <!-- <a class='toolbar__button toolbar__right-item'
+         style='font-size:16px' on-click='onSaveOrEdit'>[[saveOrEditText]]</a> -->
+    </div>
+    <div class='app-content'>
+      <div class='menu-recipe__name'>[[recipe.name]]</div>
+      <ul class='list'>
+        <li class='list__item list__item--header'>Ingredients</li>
+        <template is='x-repeat' items='[[recipe.ingredients]]'>
+          <li class='list__item'>
+            <input value='[[item]]' on-input='onIngredientDirectionUpdate'/>
+          </li>
+        </template>
+        <li class='list__item'>
+          <input placeholder='add another ingredient'/>
+        </li>
+        <li class='list__item list__item--header'>Directions</li>
+        <template is='x-repeat' items='[[recipe.directions]]'>
+          <li class='list__item'>
+            <textarea value='[[item]]' rows='5' on-input='onIngredientDirectionUpdate'></textarea>
+          </li>
+        </template>
+        <li class='list__item'>
+          <textarea placeholder='add a direction'></textarea>
+        </li>
+      </ul>
+    </div>
+  </template>
+</dom-module>
+<script>
+Polymer({
+  is: 'menu-recipe',
+  published: {
+    recipe: Object
+  },
+
+  _saveRecipe:function(){
+    this.recipe.save();
+  },
+
+  onClose:function(){
+    this.fire('menu-recipe-close');
+  },
+
+  onIngredientDirectionUpdate:function(event){
+    var tmplProxy = event.target.parentNode._templateProxy;
+    var index = tmplProxy.pathDelegate.items.indexOf(tmplProxy.item);
+    if(index !== -1){
+      tmplProxy.pathDelegate.setPathValue('items.'+index, event.target.value);
+      this._saveRecipe();
+    }
+  }
+});
+</script>
