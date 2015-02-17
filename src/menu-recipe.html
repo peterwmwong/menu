@@ -10,18 +10,23 @@
     }
 
     .menu-recipe__name {
-      font-size: 28px;
-      padding: 32px 16px 32px 16px;
-      border-bottom: 1px solid #EEE;
+      border-bottom : 1px solid #EEE;
+      font-size     : 20px;
+      font-weight   : 400;
+      padding       : 32px 16px 32px 16px;
     }
   </style>
   <template>
     <div class='app-toolbar'>
-      <a class='app-toolbar__button' on-click='onClose'>&lt;</a>
+      <a on-click='onClose'>&lt;</a>
       Recipe
+      <a class='app-toolbar__right-item' on-click='onDelete'>x</a>
     </div>
     <div class='app-content'>
-      <div class='menu-recipe__name'>[[recipe.name]]</div>
+      <input value='[[recipe.name]]'
+             class='menu-recipe__name'
+             on-input='onRecipeNameUpdate'
+             placeholder='enter a recipe name'/>
       <ul class='list'>
         <li class='list__item list__item--header'>Ingredients</li>
         <template is='x-repeat' items='[[recipe.ingredients]]'>
@@ -30,7 +35,7 @@
           </li>
         </template>
         <li class='list__item'>
-          <input placeholder='add another ingredient'/>
+          <input placeholder='add an ingredient'/>
         </li>
         <li class='list__item list__item--header'>Directions</li>
         <template is='x-repeat' items='[[recipe.directions]]'>
@@ -52,13 +57,24 @@ Polymer({
     recipe: Object
   },
 
+  created:function(){
+    this.onClose = this.onClose.bind(this);
+  },
+
+  onDelete:function(){ this.recipe.delete(this.onClose) },
+
   onClose:function(){ this.fire('menu-recipe-close') },
 
+  onRecipeNameUpdate:function(event){
+    this.setPathValue('recipe.name', event.currentTarget.value);
+    this.recipe.save();
+  },
+
   onIngredientDirectionUpdate:function(event){
-    var tmplProxy = event.target.parentNode._templateProxy;
+    var tmplProxy = event.currentTarget.parentNode._templateProxy;
     var index = tmplProxy.pathDelegate.items.indexOf(tmplProxy.item);
     if(index !== -1){
-      tmplProxy.pathDelegate.setPathValue('items.'+index, event.target.value);
+      tmplProxy.pathDelegate.setPathValue('items.'+index, event.currentTarget.value);
       this.recipe.save();
     }
   }

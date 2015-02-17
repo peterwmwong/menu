@@ -1,11 +1,13 @@
 (function(){
   var fbRecipes =  new Firebase("https://menudev.firebaseio.com/recipes");
+  var IDMAP     = {};
 
   function clone(arr){ return Array.prototype.slice.call(arr) }
 
   function Recipe(fb, createData){
-    var _this     = this;
-    this._fb      = fb;
+    var _this       = this;
+    IDMAP[fb.key()] = this;
+    this._fb        = fb;
     this._initData(createData);
 
     if(!createData)
@@ -15,11 +17,17 @@
   }
 
   Recipe.prototype = {
+    get id(){
+      return this._fb.key();
+    },
     _initData: function(data){
       data             = data || {};
       this.name        = data.name;
       this.ingredients = data.ingredients || [];
       this.directions  = data.directions  || [];
+    },
+    delete: function(cb){
+      this._fb.remove(cb);
     },
     save: function(){
       this._fb.set({
@@ -33,27 +41,9 @@
 
   Recipe.create = function(){
     var data = {
-      name: 'new recipe',
-      ingredients: [
-        '2/3 cup orange juice',
-        '2 tbsp lemon juice',
-        '2 tbsp rice vinegar',
-        '2 tbsp brown sugar',
-        '3 tbsp soy sauce',
-        '1 tsp minced garlic',
-        '2 tsp ginger',
-        '3 tbsp corn starch',
-        '1.5 cups broccoli florets',
-        '1.5 cups green beans',
-        '1 bell pepper',
-        '1 small onion'
-      ],
-      directions: [
-        'Cut raw chicken to pieces and season the chicken with salt and pepper, then sprinkle with corn starch and rub the corn starch into the chicken.',
-        'In a saucepan, whisk together the sauce ingredients. Bring to a boil over medium-high heat and cook for 5 minutes. Remove from heat.',
-        'Stir-fry the chicken for 4-5 minutes or until the chicken is cooked through. Add the onions and other veggies and stir-fry until the beans and broccoli are tender-crisp.',
-        'Add the sauce, a few tablespoons at a time, allowing the sauce to bubble up after each addition.'
-      ]
+      name        : '',
+      ingredients : [],
+      directions  : []
     };
     return new Recipe(fbRecipes.push(), data);
   };
@@ -61,7 +51,16 @@
   Recipe.all = [];
 
   fbRecipes.on("child_added", function(data) {
-    Recipe.all.push(new Recipe(data.ref()));
+    Recipe.all.push(IDMAP[data.key()] || new Recipe(data.ref()));
+  });
+
+  fbRecipes.on("child_removed", function(data) {
+    for(var i=0; i<Recipe.all.length; ++i){
+      if(Recipe.all[i].id === data.key()){
+        Recipe.all.splice(i, 1);
+        return;
+      }
+    }
   });
 
   window.Recipe = Recipe;

@@ -41,7 +41,7 @@ Polymer({
 
     mr = document.createElement('menu-recipe');
     mr.recipe = recipe;
-    mr.addEventListener('menu-recipe-close',this.onCloseRecipe.bind(this));
+    mr.addEventListener('menu-recipe-close', this.onCloseRecipe.bind(this));
     this.appendChild(mr);
   },
 
@@ -56,6 +56,9 @@ Polymer({
   onCloseRecipe:function(){
     var mr = this.querySelector('menu-recipe');
     if(mr) mr.remove();
+
+    // TODO(pwong): force a rerender
+    this.recipes = Array.prototype.slice.call(Recipe.all);
   }
 });
 </script>
