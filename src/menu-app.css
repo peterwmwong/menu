@@ -1,0 +1,101 @@
+body {
+  font-family: "RobotoDraft", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+/*========================
+  inputs
+  ========================*/
+
+input,
+textarea {
+  border    : none;
+  outline   : none;
+  font-size : inherit;
+  resize    : none;
+  width     : 100%;
+}
+
+::-webkit-input-placeholder {
+  color      : #DDD;
+  font-style : italic;
+}
+
+/*========================
+  toolbar
+  ========================*/
+.app-toolbar {
+  background  : #536DFE;
+  color       : white;
+  font-size   : 24px;
+  font-weight : 400;
+  height      : 56px;
+  line-height : 56px;
+  padding     : 0 16px;
+}
+
+.app-toolbar > * {
+  margin-right: 8px;
+}
+
+.app-toolbar > .app-toolbar__right-item {
+  float        : right;
+  margin-left  : 8px;
+  margin-right : 0;
+}
+
+
+.app-content {
+  position : absolute;
+    top    : 56px;
+    bottom : 0;
+    left   : 0;
+    right  : 0;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+
+/*========================
+  list
+  ========================*/
+.list {
+  margin: 0;
+  padding: 0 16px;
+}
+
+.list__item {
+  list-style-type : none;
+  padding: 12px 0;
+}
+
+.list__item.list__item--header {
+  color       : #AAA;
+  font-size   : 14px;
+  font-weight : 500;
+  padding     : 24px 0 8px 0;
+  position    : relative;
+}
+
+.list__item.list__item--header:first-child:before {
+  display: none;
+}
+.list__item.list__item--header:first-child {
+  padding: 16px 0 8px 0;
+}
+
+.list__item.list__item--header:before {
+  position : absolute;
+    top    :   4px;
+    right  : -16px;
+    left   : -16px;
+
+  background : #EEE;
+  content    : '';
+  height     : 1px;
+}
+
+.list__item.list__item--header.list__item--no-border:before {
+  display: none;
+}

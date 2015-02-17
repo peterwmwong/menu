@@ -1,0 +1,66 @@
+<dom-module id='menu-recipe'>
+  <style>
+    menu-recipe {
+      background: white;
+      position : absolute;
+        top    : 0;
+        bottom : 0;
+        left   : 0;
+        right  : 0;
+    }
+
+    .menu-recipe__name {
+      font-size: 28px;
+      padding: 32px 16px 32px 16px;
+      border-bottom: 1px solid #EEE;
+    }
+  </style>
+  <template>
+    <div class='app-toolbar'>
+      <a class='app-toolbar__button' on-click='onClose'>&lt;</a>
+      Recipe
+    </div>
+    <div class='app-content'>
+      <div class='menu-recipe__name'>[[recipe.name]]</div>
+      <ul class='list'>
+        <li class='list__item list__item--header'>Ingredients</li>
+        <template is='x-repeat' items='[[recipe.ingredients]]'>
+          <li class='list__item'>
+            <input value='[[item]]' on-input='onIngredientDirectionUpdate'/>
+          </li>
+        </template>
+        <li class='list__item'>
+          <input placeholder='add another ingredient'/>
+        </li>
+        <li class='list__item list__item--header'>Directions</li>
+        <template is='x-repeat' items='[[recipe.directions]]'>
+          <li class='list__item'>
+            <textarea value='[[item]]' rows='5' on-input='onIngredientDirectionUpdate'></textarea>
+          </li>
+        </template>
+        <li class='list__item'>
+          <textarea placeholder='add a direction'></textarea>
+        </li>
+      </ul>
+    </div>
+  </template>
+</dom-module>
+<script>
+Polymer({
+  is: 'menu-recipe',
+  published: {
+    recipe: Object
+  },
+
+  onClose:function(){ this.fire('menu-recipe-close') },
+
+  onIngredientDirectionUpdate:function(event){
+    var tmplProxy = event.target.parentNode._templateProxy;
+    var index = tmplProxy.pathDelegate.items.indexOf(tmplProxy.item);
+    if(index !== -1){
+      tmplProxy.pathDelegate.setPathValue('items.'+index, event.target.value);
+      this.recipe.save();
+    }
+  }
+});
+</script>
