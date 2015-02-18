@@ -3,12 +3,16 @@
 <link rel="stylesheet" href="menu-app.css">
 <link href="//fonts.googleapis.com/css?family=RobotoDraft:300,400,500" rel="stylesheet">
 <link rel="import" href="menu-recipe.html">
+<link rel="import" href="../components/core-icons/core-icons.html">
 
 <dom-module id='menu-app'>
   <template>
     <div class='app-toolbar'>
       Menu
-      <a class='app-toolbar__right-item' on-click='onAddRecipe'>+<a>
+      <core-icon
+          class='app-toolbar__icon app-toolbar__right-item'
+          icon='icons:add'
+          on-click='onAddRecipe'></core-icon>
     </div>
     <div class='app-content'>
       <ul class='list'>

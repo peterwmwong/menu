@@ -4,6 +4,7 @@
   "dependencies": {
     "webcomponentsjs": "Polymer/webcomponentsjs",
     "polymer": "Polymer/polymer#0.8-preview",
+    "core-icons": "Polymer/core-icons#0.8-preview",
     "firebase": "~2.2.0"
   }
 }

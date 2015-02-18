@@ -15,12 +15,19 @@
       font-weight   : 400;
       padding       : 32px 16px 32px 16px;
     }
+
   </style>
   <template>
     <div class='app-toolbar'>
-      <a on-click='onClose'>&lt;</a>
+      <core-icon
+          class='app-toolbar__icon'
+          icon='icons:arrow-back'
+          on-click='onClose'></core-icon>
       Recipe
-      <a class='app-toolbar__right-item' on-click='onDelete'>x</a>
+      <core-icon
+          class='app-toolbar__right-item app-toolbar__icon'
+          icon="icons:delete"
+          on-click='onDelete'></core-icon>
     </div>
     <div class='app-content'>
       <input value='[[recipe.name]]'
