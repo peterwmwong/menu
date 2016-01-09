@@ -1,0 +1,64 @@
+{
+  "recipes" : {
+    "-JiKPsX4C4bPFETEUGNm" : {
+      "directions" : [ "Cook the chicken and rice.", "In a measuring cup, whisk together the sauce ingredients. ", "Stir-fry the green beans with garlic for 5 minutes. Then add the other veggies and stir-fry until the beans and broccoli are tender-crisp.", "Add the sauce, a few tablespoons at a time, allowing the sauce to bubble up after each addition." ],
+      "ingredients" : [ "2/3 cup orange juice", "2 tbsp lemon juice", "2 tbsp rice vinegar", "2 tbsp brown sugar (or 1 tbsp or none)", "3 tbsp soy sauce", "1 tsp minced garlic", "", "3 tbsp corn starch", "1.5 cups broccoli florets", "1.5 cups green beans", "1 bell pepper", "" ],
+      "name" : "Citrus Chicken Stir Fry (6 meals)"
+    },
+    "-JiKhu4mitk-k5Im5Uk5" : {
+      "directions" : [ "Grill chicken breasts with onions until tender.", "Cook pasta for 5 minutes, then add broccoli and cook 3 minutes more.", "Heat a medium sauce pot over medium-low heat. Add butter and melt, then add flour & cayenne and whisk together over low heat until roux bubbles then cook a minute more. Whisk in milk, cheese, mustard and stock over medium-low heat to bring the sauce to a quick boil. Simmer until the sauce thickens about 5 minutes. Constantly stir to melt everything. Season sauce with salt and pepper.", "Drain pasta and broccoli florets & add to the pot and add chicken to the mix. Combine sauce with everything." ],
+      "ingredients" : [ "1 tbsp Dijon mustard", "Grilled chicken breasts", "Salt and pepper", "1 small onion, chopped", "1 pound macaroni elbows or corkscrew shaped pasta twists", "2 1/2 cups broccoli florets", "3 tbsp butter", "3 tbsp flour", "1/2 tsp cayenne pepper", "", "1/2 cup chicken broth", "4 cups sharp cheddar cheese", "3/4 cup of whole milk" ],
+      "name" : "Mac & Cheese with Broccoli & Chicken"
+    },
+    "-JiKj5cAd8f-98f49UFG" : {
+      "directions" : [ "Marinade beef with sauce.", "Beat the eggs with the salt.", "In a heated wok, add minced garlic, then the onions and carrots. Stir-fry for 1 – 2 minutes till softened. Add the beef and let brown briefly, then stir-fry until it changes color.", "Reduce the heat to medium. Add the rice, stirring and turning it over with a spatula to break up any clumps.", "Make a room in one corner of the wok and pour in the beaten egg. Scramble the egg and then combine with the fried rice." ],
+      "ingredients" : [ "8oz flank steak cut into slices", "3 tsp soy sauce", "1/2 tsp sugar", "1/4 tsp sesame oil", "Pinch of white pepper", "3/4 tsp cornstarch", "1 large egg", "1/4 tsp salt", "1 tsp minced garlic", "1/2 onion, chopped", "1/4 cup carrots", "2.5 cups cooked rice" ],
+      "name" : "Beef Fried Rice"
+    },
+    "-JiKjpLvha-Wc_AZWmGq" : {
+      "directions" : [ "Saute onion, green pepper, carrot till tender. Stir in flour til blended. Gradually add broth and bring to a boil. Cook and stir for 2 min or until thickened.", "Transfer to slow cooker. Stir in sausage, tomatoes, oregano, thyme and cayenne. Cover and cook on high for 4-5 hours or until veggies are tender. Serve with rice." ],
+      "ingredients" : [ "1 medium onion", "1 medium green pepper", "1 medium carrot", "1/4 cup flour", "1 cup chicken broth", "1 lb polish sausage", "1 can diced tomato", "2 tbsp oregano", "2 tbsp thyme", "1/8 tsp cayenne pepper", "cooked rice" ],
+      "name" : "Gumbo (7 meals)"
+    },
+    "-JiKkPQ5-Bdx6SCvtwgu" : {
+      "directions" : [ "Cut meat into small pieces, mix with Sauce and marinade\n", "Stir-fry meat, then any green onions until fragrant. Remove and serve." ],
+      "ingredients" : [ "1 Tbsp soy sauce", "1/2 Tbsp each: cooking wine, water", "1/2 Tbsp each: garlic, sugar", "1 Tbsp cornstarch" ],
+      "name" : "Stir-fried Pork"
+    },
+    "-JiKkpIGe01e9I_5Vh__" : {
+      "directions" : [ "cook mushroom and onions", "sprinkle flour on 4 pork ribs (both sides)", "mix 1 mushroom can of milk with cream of mushroom", "create opening on pan and cook all pork ribs in middle (open lid), flip ribs 45deg after each min - 2min", "remove mushrooms/onions from pan after 5min", "add oil, cook pork on medium heat (covered; flip occasionally; cut open) for 2 min", "pour in cream and veggies and mix, then cover and steam for 3-5 min", "Check for raw pork, if so, cook for another 3-5 min" ],
+      "ingredients" : [ "Pork ribs", "Onion", "Cream of Chicken or Mushroom" ],
+      "name" : "Pork Chops (4-5 Meals)"
+    },
+    "-JiKl5ueOCr5xlNniora" : {
+      "directions" : [ "Bring water to a boil. Add pasta and cook for 20 min or until desired softness.", "Cook the chicken breasts & season with salt & pepper to taste.", "Make the sauce: combine 1 tbsp garlic, 1 tsp salt, 1/4 cup balsamic vinegar, 1 tbsp sweet white wine, 1/4 cup olive oil.", "Cook spinach for 30 seconds.", "Drain pasta and pour into a pan. Add the cooked chicken on top and pour the sauce evenly over the pasta. Add tomatoes and cook on medium heat while mixing the creation for 2 min." ],
+      "ingredients" : [ "2 1/2 cups pasta", "2 chicken breasts", "1 cup halved mini tomatoes", "salt & pepper to taste", "1 ounce spinach", "1 tbsp garlic", "1/4 cup balsamic vinegar", "1 tbsp sweet white wine (optional)", "1/4 cup extra virgin olive oil" ],
+      "name" : "Penne Fresca (4-5 meals)"
+    },
+    "-JiKlQ8AXmiZB-K-yJLm" : {
+      "directions" : [ "Bring water to a boil. Throw in 2 packs of noodles and cook for 5 min or until desired softness.", "Meanwhile, whisk together peanut butter, lime juice, soy sauce, brown sugar and oil.", "Drain noodles and put into a pan. Pour in the above mixture with the noodles and chicken and mix evenly." ],
+      "ingredients" : [ "12 oz. noodles", "3 Tbsp fresh lime juice", "3 Tbsp low-sodium soy sauce", "4 Tbsp peanut butter", "3 Tbsp of regular brown sugar", "1 Tbsp oil", "1 cup cooked chicken, chopped", "1 small red bell pepper, thinly sliced" ],
+      "name" : "Thai Peanut Noodles"
+    },
+    "-JrnQuISVeNfkrFZXmem" : {
+      "directions" : [ "Combine all ingredients into a large mixing bowl and mix until the batter is thick and evenly distributed.", "Form 1.5 inch balls and place them on a greased baking sheet, 2 inches apart. ", "Pre-heat oven to 350F and bake for 15 minutes." ],
+      "ingredients" : [ "4.5oz of flour", "1 large egg", "1 tsp baking powder", "1 cup Nutella" ],
+      "name" : "Nutella Cookies "
+    },
+    "-JrspbpNZwjd-YeaJiNK" : {
+      "directions" : [ "In a slow cooker, place pork and onion inside. Pour your soda on top of everything and cover and cook on high at least 8 to 10 hours.\n", "\nRemove all of the meat from the slow cooker into a bowl and then drain your slow cooker of the onions and liquid. Add your meat back to the slow cooker and shred it up with two forks. Pour the barbecue sauce over the pork and stir to combine. Serve immediately or keep warm in slow cooker until ready to serve." ],
+      "ingredients" : [ "1 (2 to 5 pound) pork shoulder / pork butt / pork roast / tenderloin", "1 large onion, quartered", "2 cans Coke / Dr Pepper / Root Beer", "1 (8oz) bottle BBQ sauce" ],
+      "name" : "Pulled Pork "
+    },
+    "-JvjCG4RwT2PV58fYz77" : {
+      "directions" : [ "Heat oil in a wok over medium-high heat. Stir in the garlic, and cook until the edges begin to brown, about 20 seconds. ", "Add the green beans; cook and stir until the green beans begin to soften, about 10 minutes. Stir in the sugar, oyster sauce, and soy sauce. ", "Continue cooking and stirring for several minutes until the beans have attained the desired degree of tenderness." ],
+      "ingredients" : [ "4 cloves of garlic, minced", "Green beans", "1 tbsp sugar", "2 tsp soy sauce" ],
+      "name" : "Stir-fry Green Beans"
+    },
+    "-K7bUdJX1_iM_NTQg-92" : {
+      "directions" : [ "Cook 1 cup of rice.", "Steam chopped broccoli and stems until tender but still bright green.", "Cook some chicken and sprinkle with salt & pepper.", "Put rice, broccoli and chicken together in the casserole pot.", "Put some oil in skillet. Add onions, garlic, and mushrooms and saute until softened. Stir in flour and cook about one minute to take away the raw flour taste. Whisk in milk and continue whisking until slightly thickened. Season with salt and pepper. Add 1½ cup cheese, 3-4 spoonfuls of sour cream and stir to melt.", "Pour the above mixture into the casserole pot and stir until evenly distributed. Sprinkle with remaining ½ cup cheese.", "Bake at 350 degrees F for 25 min." ],
+      "ingredients" : [ "4 cups (10 ounces) fresh broccoli florets and stems, chopped (stems should be VERY finely chopped)", "2 tbsp lemon juice", "1/4 cup chopped onions", "1 clove garlic, minced", "1 small can of mushrooms", "1 tbsp flour", "3/2 cups of milk", "1/2 tsp salt", "1/8 tsp white pepper", "5/4 cup cooked rice" ],
+      "name" : "Broccoli Rice with Chicken"
+    }
+  }
+}
